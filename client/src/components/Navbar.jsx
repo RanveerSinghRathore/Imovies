@@ -175,11 +175,12 @@ export default function Navbar() {
                 )}
                 <button
                   onClick={handleLogout}
-                  className="p-2 rounded-xl transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+                  className="flex items-center gap-1.5 px-3 h-9 rounded-xl text-xs font-semibold text-white/70 hover:text-white hover:bg-white/10 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
                   title="Logout"
                   aria-label="Logout"
                 >
-                  <LogOut className="w-4 h-4 text-white/60" aria-hidden />
+                  <LogOut className="w-3.5 h-3.5" aria-hidden />
+                  <span>Logout</span>
                 </button>
               </div>
             ) : (
