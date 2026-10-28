@@ -1,0 +1,134 @@
+/* ─── Google Fonts – Inter ──────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+/* ─── Design Tokens (Tailwind v4 @theme) ───────────────────────────────── */
+@theme {
+  /* Primary action */
+  --color-primary:       #F84464;
+  --color-primary-hover: #E23A58;
+  --color-primary-soft:  #FDE7EB;
+
+  /* Accent gradient endpoints */
+  --color-accent-from:   #F84464;
+  --color-accent-to:     #FF7A59;
+
+  /* Semantic */
+  --color-success:       #22C55E;
+  --color-warning:       #F5A623;
+  --color-error:         #EF4444;
+  --color-star:          #F5A623;
+
+  /* ── LIGHT theme tokens (defaults) ── */
+  --color-bg:            #F5F5F5;
+  --color-surface:       #FFFFFF;
+  --color-surface-2:     #F0F0F3;
+  --color-border:        #E5E5E5;
+  --color-text:          #1F2533;
+  --color-muted:         #6B7280;
+
+  /* Header (always dark regardless of theme) */
+  --color-header:        #333545;
+  --color-header-strip:  #2B2D3C;
+  --color-header-text:   #FFFFFF;
+  --color-header-muted:  rgba(255,255,255,0.65);
+}
+
+/* ─── Dark-mode overrides (applied when <html data-theme="dark">) ─────── */
+[data-theme="dark"] {
+  --color-bg:        #0E0E12;
+  --color-surface:   #1A1A22;
+  --color-surface-2: #23232D;
+  --color-border:    #2E2E3A;
+  --color-text:      #F4F4F6;
+  --color-muted:     #9A9AA8;
+  --color-primary-soft: rgba(248,68,100,0.15);
+}
+
+/* ─── Base layer ────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+                 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100svh;
+    overflow-x: hidden;
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  button, a, input, select, textarea {
+    touch-action: manipulation;
+    min-height: 44px;
+  }
+
+  span, label, li {
+    min-height: unset;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ─── Utility helpers ───────────────────────────────────────────────────── */
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-accent-from), var(--color-accent-to));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, var(--color-accent-from), var(--color-accent-to));
+  }
+
+  .chip-primary {
+    background-color: var(--color-primary-soft);
+    color: var(--color-primary);
+  }
+
+  .card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+  }
+
+  .theme-transition {
+    transition: background-color 200ms ease, color 200ms ease,
+                border-color 200ms ease, box-shadow 200ms ease;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
